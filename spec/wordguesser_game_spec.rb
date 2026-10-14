@@ -100,7 +100,7 @@ describe WordGuesserGame do
     end
   end
 
-  describe 'displayed word with guesses', pending: true do
+  describe 'displayed word with guesses' do
     before do
       @game = described_class.new('banana')
     end
