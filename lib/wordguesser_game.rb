@@ -32,6 +32,13 @@ class WordGuesserGame
     @word.chars.map { |c| @guesses.include?(c.downcase) ? c : '-' }.join
   end
 
+  def check_win_or_lose
+    return :lose if @wrong_guesses.length >= 7
+    return :win if !@word.empty? && !word_with_guesses.include?('-')
+
+    :play
+  end
+
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> WordGuesserGame.get_random_word

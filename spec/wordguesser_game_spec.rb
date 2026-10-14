@@ -124,17 +124,17 @@ describe WordGuesserGame do
       @game = described_class.new('dog')
     end
 
-    it 'is win when all letters guessed', pending: true do
+    it 'is win when all letters guessed' do
       guess_several_letters(@game, 'ogd')
       expect(@game.check_win_or_lose).to eq(:win)
     end
 
-    it 'is lose after 7 incorrect guesses', pending: true do
+    it 'is lose after 7 incorrect guesses' do
       guess_several_letters(@game, 'tuvwxyz')
       expect(@game.check_win_or_lose).to eq(:lose)
     end
 
-    it 'continues play if neither win nor lose', pending: true do
+    it 'continues play if neither win nor lose' do
       guess_several_letters(@game, 'do')
       expect(@game.check_win_or_lose).to eq(:play)
     end
