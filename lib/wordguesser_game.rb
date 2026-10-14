@@ -10,6 +10,22 @@ class WordGuesserGame
     @wrong_guesses = ''
   end
 
+  def guess(letter)
+    raise ArgumentError, 'Guess cannot be nil or empty' if letter.nil? || letter.empty?
+    raise ArgumentError, 'Guess must be an alphabetic character' unless letter =~ /^[a-zA-Z]$/
+
+    letter = letter.downcase
+
+    return false if @guesses.include?(letter) || @wrong_guesses.include?(letter)
+
+    if @word.downcase.include?(letter)
+      @guesses << letter
+    else
+      @wrong_guesses << letter
+    end
+    true
+  end
+
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> WordGuesserGame.get_random_word
